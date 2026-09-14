@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Guided sewing machine troubleshooting from Vacuums R Us and Sewing Too."
+  >
+
+  <title>Sewing Machine Troubleshooting | Vacuums R Us</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <button
+      class="brand"
+      id="home-button"
+      type="button"
+      aria-label="Return to troubleshooting home"
+    >
+      <span class="temporary-logo" aria-hidden="true">
+        <span class="logo-v">V</span>
+        <span class="logo-thread"></span>
+      </span>
+
+      <span class="brand-text">
+        <span class="brand-name">Vacuums R Us</span>
+        <span class="brand-subtitle">and Sewing Too</span>
+      </span>
+    </button>
+
+    <button
+      class="header-machine-button hidden"
+      id="change-machine-button"
+      type="button"
+    >
+      Change machine
+    </button>
+  </header>
+
+  <main class="main-container">
+    <div
+      class="machine-status hidden"
+      id="machine-status"
+      aria-live="polite"
+    >
+      <span class="status-label">Your machine</span>
+      <strong id="selected-machine-label"></strong>
+    </div>
+
+    <div
+      class="progress-wrapper hidden"
+      id="progress-wrapper"
+    >
+      <div class="progress-information">
+        <span id="progress-label">Step 1 of 1</span>
+        <span id="progress-percentage">0%</span>
+      </div>
+
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="progress-track"
+      >
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <section
+      class="screen active-screen"
+      id="welcome-screen"
+      aria-labelledby="welcome-heading"
+    >
+      <div class="hero-card">
+        <div class="eyebrow">Guided sewing support</div>
+
+        <h1 id="welcome-heading">
+          Let’s get your machine sewing smoothly again.
+        </h1>
+
+        <p class="hero-description">
+          Answer a few questions and we’ll guide you through one
+          troubleshooting step at a time.
+        </p>
+
+        <div class="hero-features">
+          <div class="feature">
+            <span class="feature-icon" aria-hidden="true">✓</span>
+            <span>Instructions matched to your machine</span>
+          </div>
+
+          <div class="feature">
+            <span class="feature-icon" aria-hidden="true">✓</span>
+            <span>A summary of everything you tried</span>
+          </div>
+
+          <div class="feature">
+            <span class="feature-icon" aria-hidden="true">✓</span>
+            <span>Service options if you still need help</span>
+          </div>
+        </div>
+
+        <button
+          class="primary-button large-button"
+          id="begin-button"
+          type="button"
+        >
+          Start troubleshooting
+        </button>
+      </div>
+
+      <div class="safety-notice">
+        <span class="notice-icon" aria-hidden="true">!</span>
+
+        <div>
+          <strong>Stop and unplug the machine</strong>
+
+          <p>
+            If you notice smoke, sparks, a burning smell, a damaged
+            cord, or unusual electrical behavior, do not continue
+            troubleshooting. Contact a professional technician.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen"
+      id="brand-screen"
+      aria-labelledby="brand-heading"
+    >
+      <div class="content-card">
+        <button class="text-back-button" data-back="welcome-screen">
+          ← Back
+        </button>
+
+        <div class="eyebrow">Step 1</div>
+        <h1 id="brand-heading">Who made your sewing machine?</h1>
+
+        <p class="screen-description">
+          Select the brand that appears on the front of your machine.
+        </p>
+
+        <div class="selection-grid two-column-grid">
+          <button
+            class="selection-card"
+            type="button"
+            data-brand="Janome"
+          >
+            <span class="selection-card-icon machine-icon">J</span>
+
+            <span class="selection-card-copy">
+              <strong>Janome</strong>
+              <small>Choose a supported Janome model</small>
+            </span>
+
+            <span class="selection-arrow" aria-hidden="true">→</span>
+          </button>
+
+          <button
+            class="selection-card"
+            type="button"
+            data-brand="Generic"
+          >
+            <span class="selection-card-icon">✦</span>
+
+            <span class="selection-card-copy">
+              <strong>Generic or universal</strong>
+              <small>Simple instructions for most machines</small>
+            </span>
+
+            <span class="selection-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="coming-soon-note">
+          More sewing machine brands will be added in future versions.
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen"
+      id="model-screen"
+      aria-labelledby="model-heading"
+    >
+      <div class="content-card">
+        <button class="text-back-button" data-back="brand-screen">
+          ← Back
+        </button>
+
+        <div class="eyebrow">Step 2</div>
+        <h1 id="model-heading">Which Janome model do you have?</h1>
+
+        <p class="screen-description">
+          The model name or number is usually printed on the front
+          or side of the machine.
+        </p>
+
+        <div class="selection-grid">
+          <button
+            class="selection-card"
+            type="button"
+            data-model="tm16"
+          >
+            <span class="selection-card-icon machine-icon">16</span>
+
+            <span class="selection-card-copy">
+              <strong>Janome Travel Mate 16</strong>
+              <small>TM16 mechanical sewing machine</small>
+            </span>
+
+            <span class="selection-arrow" aria-hidden="true">→</span>
+          </button>
+
+          <button
+            class="selection-card"
+            type="button"
+            data-model="5300qdc"
+          >
+            <span class="selection-card-icon machine-icon">53</span>
+
+            <span class="selection-card-copy">
+              <strong>Janome 5300QDC</strong>
+              <small>Computerized sewing and quilting machine</small>
+            </span>
+
+            <span class="selection-arrow" aria-hidden="true">→</span>
+          </button>
+
+          <button
+            class="selection-card"
+            type="button"
+            data-model="m8"
+          >
+            <span class="selection-card-icon machine-icon">M8</span>
+
+            <span class="selection-card-copy">
+              <strong>Janome Continental M8 Professional</strong>
+              <small>Advanced computerized sewing machine</small>
+            </span>
+
+            <span class="selection-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="help-panel">
+          <strong>Don’t see your model?</strong>
+
+          <p>
+            Return to the previous screen and select
+            “Generic or universal” to follow simplified instructions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen"
+      id="issue-screen"
+      aria-labelledby="issue-heading"
+    >
+      <div class="content-card">
+        <button class="text-back-button" id="issue-back-button">
+          ← Back
+        </button>
+
+        <div class="eyebrow">Choose a problem</div>
+        <h1 id="issue-heading">What is your machine doing?</h1>
+
+        <p class="screen-description">
+          Choose the option that most closely matches the problem.
+        </p>
+
+        <div class="selection-grid">
+          <button
+            class="selection-card featured-selection"
+            type="button"
+            data-issue="skipping-stitches"
+          >
+            <span class="selection-card-icon">〰</span>
+
+            <span class="selection-card-copy">
+              <strong>Skipping stitches</strong>
+              <small>
+                Some stitches are missing or the stitch line has gaps
+              </small>
+            </span>
+
+            <span class="available-badge">Available</span>
+          </button>
+
+          <button class="selection-card disabled-selection" disabled>
+            <span class="selection-card-icon">⌁</span>
+
+            <span class="selection-card-copy">
+              <strong>Thread bunching underneath</strong>
+              <small>Large loops or a “bird’s nest” under the fabric</small>
+            </span>
+
+            <span class="soon-badge">Coming soon</span>
+          </button>
+
+          <button class="selection-card disabled-selection" disabled>
+            <span class="selection-card-icon">✂</span>
+
+            <span class="selection-card-copy">
+              <strong>Thread keeps breaking</strong>
+              <small>The upper or bobbin thread repeatedly snaps</small>
+            </span>
+
+            <span class="soon-badge">Coming soon</span>
+          </button>
+
+          <button class="selection-card disabled-selection" disabled>
+            <span class="selection-card-icon">↛</span>
+
+            <span class="selection-card-copy">
+              <strong>Fabric is not feeding</strong>
+              <small>The fabric stays in place or feeds unevenly</small>
+            </span>
+
+            <span class="soon-badge">Coming soon</span>
+          </button>
+
+          <button class="selection-card disabled-selection" disabled>
+            <span class="selection-card-icon">!</span>
+
+            <span class="selection-card-copy">
+              <strong>Machine is jammed</strong>
+              <small>The handwheel or needle will not move normally</small>
+            </span>
+
+            <span class="soon-badge">Coming soon</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen"
+      id="precheck-screen"
+      aria-labelledby="precheck-heading"
+    >
+      <div class="content-card narrow-card">
+        <button class="text-back-button" data-back="issue-screen">
+          ← Back
+        </button>
+
+        <div class="eyebrow">Before we begin</div>
+        <h1 id="precheck-heading">Let’s create a clean test setup.</h1>
+
+        <p class="screen-description">
+          This helps us tell whether the problem is caused by the
+          machine, its setup, or the materials.
+        </p>
+
+        <div class="instruction-box">
+          <ol class="instruction-list">
+            <li>
+              Remove any specialty presser foot and install the
+              standard zigzag or all-purpose foot.
+            </li>
+
+            <li>
+              Set the machine to a basic straight stitch with a
+              medium stitch length.
+            </li>
+
+            <li>
+              Use two layers of ordinary woven cotton fabric.
+            </li>
+
+            <li>
+              Use regular all-purpose sewing thread in both the
+              needle and bobbin.
+            </li>
+          </ol>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="precheck-confirmation">
+          <span>I have prepared a basic test sample.</span>
+        </label>
+
+        <button
+          class="primary-button full-width-button"
+          id="begin-steps-button"
+          type="button"
+          disabled
+        >
+          Begin troubleshooting
+        </button>
+      </div>
+    </section>
+
+    <section
+      class="screen"
+      id="troubleshooting-screen"
+      aria-labelledby="step-title"
+    >
+      <article class="content-card troubleshooting-card">
+        <button class="text-back-button" id="previous-step-button">
+          ← Previous
+        </button>
+
+        <div class="step-heading-row">
+          <div>
+            <div class="eyebrow" id="step-eyebrow">
+              Troubleshooting step
+            </div>
+
+            <h1 id="step-title"></h1>
+          </div>
+
+          <span class="step-number-badge" id="step-number-badge"></span>
+        </div>
+
+        <p class="step-introduction" id="step-introduction"></p>
+
+        <div
+          class="diagram-container"
+          id="step-diagram"
+          aria-label="Troubleshooting illustration"
+        ></div>
+
+        <div class="instruction-box">
+          <h2>What to do</h2>
+          <ol class="instruction-list" id="step-instructions"></ol>
+        </div>
+
+        <div
+          class="tip-box hidden"
+          id="step-tip-box"
+        >
+          <span class="tip-icon" aria-hidden="true">i</span>
+
+          <div>
+            <strong id="step-tip-title">Helpful tip</strong>
+            <p id="step-tip"></p>
+          </div>
+        </div>
+
+        <div
+          class="warning-box hidden"
+          id="step-warning-box"
+        >
+          <span class="notice-icon" aria-hidden="true">!</span>
+
+          <div>
+            <strong>Important</strong>
+            <p id="step-warning"></p>
+          </div>
+        </div>
+
+        <div class="test-panel">
+          <h2>Test the machine</h2>
+
+          <p>
+            Sew several inches on your prepared cotton sample.
+            Did this fix the skipped stitches?
+          </p>
+
+          <div class="answer-buttons">
+            <button
+              class="success-button"
+              id="fixed-button"
+              type="button"
+            >
+              Yes, it’s fixed
+            </button>
+
+            <button
+              class="secondary-button"
+              id="continue-button"
+              type="button"
+            >
+              No, continue
+            </button>
+          </div>
+
+          <button
+            class="cannot-complete-button"
+            id="cannot-complete-button"
+            type="button"
+          >
+            I can’t complete this step
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <section
+      class="screen"
+      id="success-screen"
+      aria-labelledby="success-heading"
+    >
+      <div class="content-card result-card">
+        <div class="result-icon success-result-icon" aria-hidden="true">
+          ✓
+        </div>
+
+        <div class="eyebrow">Problem solved</div>
+
+        <h1 id="success-heading">
+          Yay! We’re glad your machine is sewing again.
+        </h1>
+
+        <p class="result-description" id="success-description"></p>
+
+        <div class="summary-card">
+          <h2>What fixed the problem</h2>
+          <p id="successful-step-summary"></p>
+        </div>
+
+        <div class="result-actions">
+          <button
+            class="primary-button"
+            id="troubleshoot-another-button"
+            type="button"
+          >
+            Troubleshoot another issue
+          </button>
+
+          <a
+            class="secondary-link-button"
+            href="https://www.vacuumsrus.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit Vacuums R Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen"
+      id="service-screen"
+      aria-labelledby="service-heading"
+    >
+      <div class="content-card service-card">
+        <div class="result-icon service-result-icon" aria-hidden="true">
+          🔧
+        </div>
+
+        <div class="eyebrow">Professional service recommended</div>
+
+        <h1 id="service-heading">
+          Your machine may need a closer look.
+        </h1>
+
+        <p class="result-description">
+          You completed the safe at-home troubleshooting steps.
+          We’ve prepared a summary you can share with a Vacuums R Us
+          sewing machine technician.
+        </p>
+
+        <div class="summary-card">
+          <div class="summary-heading-row">
+            <h2>Troubleshooting summary</h2>
+
+            <button
+              class="small-button"
+              id="copy-summary-button"
+              type="button"
+            >
+              Copy summary
+            </button>
+          </div>
+
+          <div
+            class="formatted-summary"
+            id="formatted-summary"
+          ></div>
+
+          <p
+            class="copy-message hidden"
+            id="copy-message"
+            role="status"
+          >
+            Summary copied!
+          </p>
+        </div>
+
+        <div class="service-option-grid">
+          <a
+            class="service-option-card"
+            href="#service-request-form"
+          >
+            <span class="service-option-icon" aria-hidden="true">✉</span>
+            <strong>Prepare service request</strong>
+            <small>Your troubleshooting summary is already included</small>
+          </a>
+
+          <a
+            class="service-option-card"
+            href="https://www.vacuumsrus.com/locations/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="service-option-icon" aria-hidden="true">⌖</span>
+            <strong>Find a store</strong>
+            <small>View locations, hours, and directions</small>
+          </a>
+
+          <a
+            class="service-option-card"
+            href="https://www.vacuumsrus.com/contact/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="service-option-icon" aria-hidden="true">?</span>
+            <strong>Contact us</strong>
+            <small>Visit the Vacuums R Us contact page</small>
+          </a>
+
+          <a
+            class="service-option-card"
+            href="tel:+17209542151"
+          >
+            <span class="service-option-icon" aria-hidden="true">☎</span>
+            <strong>Call Vacuums R Us</strong>
+            <small>(720) 954-2151</small>
+          </a>
+        </div>
+
+        <form
+          class="service-request-form"
+          id="service-request-form"
+        >
+          <div class="form-heading">
+            <div>
+              <div class="eyebrow">Prototype form</div>
+              <h2>Prepare a service request</h2>
+            </div>
+
+            <span class="prototype-badge">Submission coming soon</span>
+          </div>
+
+          <p class="form-description">
+            Complete the form to preview or copy an email request.
+            Direct website submission will be connected in a future version.
+          </p>
+
+          <div class="form-grid">
+            <label>
+              Name
+              <input
+                type="text"
+                id="customer-name"
+                autocomplete="name"
+                placeholder="Your name"
+              >
+            </label>
+
+            <label>
+              Email
+              <input
+                type="email"
+                id="customer-email"
+                autocomplete="email"
+                placeholder="you@example.com"
+              >
+            </label>
+
+            <label>
+              Phone number
+              <input
+                type="tel"
+                id="customer-phone"
+                autocomplete="tel"
+                placeholder="(000) 000-0000"
+              >
+            </label>
+
+            <label>
+              Preferred store
+              <select id="preferred-store">
+                <option value="">Select a store</option>
+                <option value="Arvada">Arvada</option>
+                <option value="Fort Collins">Fort Collins</option>
+                <option value="No preference">No preference</option>
+              </select>
+            </label>
+
+            <label>
+              Preferred contact method
+              <select id="preferred-contact">
+                <option value="">Select a method</option>
+                <option value="Phone">Phone</option>
+                <option value="Email">Email</option>
+                <option value="Either">Either</option>
+              </select>
+            </label>
+
+            <label>
+              Was the machine purchased from Vacuums R Us?
+              <select id="purchased-from-vru">
+                <option value="">Select an answer</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Unsure">Unsure</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Troubleshooting summary
+            <textarea
+              id="service-summary-field"
+              rows="10"
+              readonly
+            ></textarea>
+          </label>
+
+          <label>
+            Additional details
+            <textarea
+              id="additional-details"
+              rows="5"
+              placeholder="Tell us anything else the technician should know."
+            ></textarea>
+          </label>
+
+          <div class="form-action-row">
+            <button
+              class="secondary-button"
+              id="preview-email-button"
+              type="button"
+            >
+              Preview email
+            </button>
+
+            <button
+              class="secondary-button"
+              id="copy-request-button"
+              type="button"
+            >
+              Copy full request
+            </button>
+
+            <button
+              class="primary-button disabled-submit-button"
+              type="submit"
+              disabled
+              title="Direct submission will be added in a future version"
+            >
+              Submit request — coming soon
+            </button>
+          </div>
+
+          <p
+            class="copy-message hidden"
+            id="request-copy-message"
+            role="status"
+          >
+            Full service request copied!
+          </p>
+        </form>
+
+        <div class="start-over-row">
+          <button
+            class="text-button"
+            id="service-start-over-button"
+            type="button"
+          >
+            Start troubleshooting again
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="email-dialog" id="email-dialog">
+      <div class="dialog-content">
+        <button
+          class="dialog-close-button"
+          id="close-email-dialog"
+          type="button"
+          aria-label="Close email preview"
+        >
+          ×
+        </button>
+
+        <div class="eyebrow">Email preview</div>
+        <h2>Your prepared service request</h2>
+
+        <p>
+          Review the message below. You can copy it or open it in
+          your email application.
+        </p>
+
+        <textarea
+          id="email-preview-text"
+          rows="18"
+          readonly
+        ></textarea>
+
+        <div class="dialog-actions">
+          <button
+            class="secondary-button"
+            id="copy-email-button"
+            type="button"
+          >
+            Copy email
+          </button>
+
+          <button
+            class="primary-button"
+            id="open-email-button"
+            type="button"
+          >
+            Open email app
+          </button>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Prototype troubleshooting guide for Vacuums R Us and Sewing Too.
+    </p>
+
+    <div class="footer-links">
+      <a
+        href="https://www.vacuumsrus.com/locations/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Locations
+      </a>
+
+      <a
+        href="https://www.vacuumsrus.com/contact/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Contact
+      </a>
+
+      <a href="tel:+17209542151">
+        Call
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
